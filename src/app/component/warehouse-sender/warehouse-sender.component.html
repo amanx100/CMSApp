@@ -1,0 +1,100 @@
+<mat-toolbar color="primary">
+  <span>Accepted Product List</span>
+  <span class="user-spacer"></span>
+  <div class="search-box">
+    <mat-form-field><input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search"></mat-form-field>
+  </div>
+</mat-toolbar>
+<div >
+  <mat-table #table [dataSource]="dataSource">
+
+    <!--    <ng-container matColumnDef="user_id">
+          <mat-header-cell *matHeaderCellDef class="Photo"> Photo </mat-header-cell>
+          <mat-cell *matCellDef="let element"  class="Photo"> <img src="{{Config.MAIN_URL}}/php/uploads/{{element.user_id}}_image.png" alt="Image Not Found" width="100px" height="100px" id="photo"> </mat-cell>
+        </ng-container>-->
+
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="full_name">
+      <mat-header-cell *matHeaderCellDef  class="fullname"> Sender Name </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="fullname"> <strong>{{element.full_name}}</strong> <br/> Phone#{{element.mobile}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Product_Name">
+      <mat-header-cell *matHeaderCellDef class="width2"> Product Information </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="width2">
+        Product Name : <b>{{  element.Product_Name == null ? element.pro_name : element.Product_Name }} </b><br>
+        TN: {{  element.tr_no  }}<br>
+        {{  element.Box_id == null ? '' : "Box No: "+element.Box_id }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Quantity" >
+      <mat-header-cell *matHeaderCellDef class="width1"> Quantity </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="width1">
+        {{element.Quantity}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="SendByAorS">
+      <mat-header-cell *matHeaderCellDef class="width1"> Air/Ship </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="width1">
+        {{element.SendByAorS == 0 ? 'Ship' : 'Air'}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="worcbm">
+      <mat-header-cell *matHeaderCellDef> Weight/CBM </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        Weight : {{element.Weight == null ? '00' : element.Weight}}<br/>
+        CBM :  {{element.CBM == null ? '00' : element.CBM}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <mat-header-cell *matHeaderCellDef> Amount </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        Unit Price : {{element.SendByAorS == 0 ? element.CBMPrice : element.WeightPrice }} <br>
+        Total Amount : {{element.SendByAorS == 0 ? (element.CBMPrice*element.CBM)*element.Quantity : (element.WeightPrice*element.Weight)*element.Quantity }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="button">
+      <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="centerText">
+
+        <button mat-icon-button class="done" (click)="Approve_Product(element.imp_id)"><mat-icon>done</mat-icon></button>  <button mat-icon-button class="delete"><mat-icon>clear</mat-icon></button>
+      </mat-cell>
+    </ng-container>
+
+    <!--
+        <ng-container matColumnDef="button">
+          <mat-header-cell *matHeaderCellDef class="btn_edit_delete"></mat-header-cell>
+          <mat-cell *matCellDef="let element"  class="btn_edit_delete">
+            <button mat-icon-button [matMenuTriggerFor]="Usermenu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+
+            <mat-menu #Usermenu="matMenu">
+              <button mat-menu-item (click)="EditUser(element.user_id)">
+                <mat-icon>edit</mat-icon>
+                <span>Edit</span>
+              </button>
+              <button mat-menu-item (click)="Delete_User(element.user_id)">
+                <mat-icon>delete</mat-icon>
+                <span>Delete</span>
+              </button>
+            </mat-menu>
+          </mat-cell>
+        </ng-container>-->
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 20]"
+                 [showFirstLastButtons]="true">
+  </mat-paginator>
+</div>

@@ -1,0 +1,92 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.example-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 400px;
+}
+
+.button-pane{
+  padding: 10px;
+}
+
+.user-icon {
+  padding: 0 14px;
+}
+
+.user-spacer {
+  flex: 1 1 auto;
+}
+.centerText{
+  text-align: center;
+}
+.done{
+  padding: 0 10px;
+  //background: #;
+  color: #38803e;
+}
+.edite{
+  //padding: 0 10px;
+  //background: #0794af;
+  color: #0794af;
+}
+
+.delete{
+  //padding: 0 10px;
+  //background: #0794af;
+  color: #ff1100;
+}
+.width1{
+  flex: none;
+  width: 80px;
+}
+.width2{
+  flex: none;
+  width: 230px;
+}
+.search-box{
+  width: 300px;
+
+  ::ng-deep .mat-form-field-underline {
+    background-color: rgb(255, 255, 255);
+  }
+  ::ng-deep .mat-input-placeholder{
+    color: white;
+  }
+  ::ng-deep .mat-form-field-ripple {
+    background-color: #ffffff;
+  }
+}
+
+*:focus {
+  border: none;
+  outline: none;
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.Photo{
+  width: 150px !important;
+  flex: none;
+}
+.fullname{
+  width: 25% !important;
+  flex: none;
+}
+.btn_edit_delete {
+  flex: none;
+  width: 40px;
+}

@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+  <span>Are You Sure this product Send To Warehouse?</span>
+</mat-toolbar>
+<div class="user-content">
+  <div class="container">
+        <mat-card-content>
+          <div class="row">
+            <div class="col-md-6">
+              <b>Contact:</b><br/>
+              {{Full_name}}<br/>
+              {{mobile_number}}<br/>
+            </div>
+            <div class="col-md-6">
+              <b>Product:</b><br/>
+              Product Name: <b>{{Product_Name == null ? pro_name : Product_Name }}</b><br/>
+              Tr.# {{tr_Number}}<br/>
+            </div>
+          </div>
+<br/>
+<br/>
+        </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="onSubmit()" color="primary"> Yes </button>
+      <button mat-raised-button (click)="onClose()"> No </button>
+    </mat-card-actions>
+  </div>
+</div>

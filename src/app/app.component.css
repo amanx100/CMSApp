@@ -1,0 +1,16 @@
+.loading_process {
+  top: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 99999;
+  align-items: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  vertical-align: center; }
+
+.mat-spinner circle {
+  stroke: #2a9bbd; }
+
+/*# sourceMappingURL=app.component.css.map */

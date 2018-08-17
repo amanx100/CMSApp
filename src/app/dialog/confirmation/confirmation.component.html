@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <span>Confirmation</span>
+</mat-toolbar>
+<div class="user-content">
+  <div class="container">
+    <mat-card-content>
+      {{message}}
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button (click)="onSubmit()" color="primary">Yes</button>
+      <button mat-raised-button (click)="onClose()">No</button>
+    </mat-card-actions>
+  </div>
+</div>

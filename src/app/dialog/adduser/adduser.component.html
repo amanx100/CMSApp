@@ -1,0 +1,52 @@
+<mat-toolbar color="primary">
+  <span>Add New User</span>
+</mat-toolbar>
+<div class="user-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <mat-card-content>
+          <mat-form-field class="user-full-width">
+            <input matInput placeholder="Full Name" [formControl]="fullName" required minlength #fullname>
+            <mat-error *ngIf="fullName.invalid">{{getFullNameMessage()}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="user-full-width">
+            <input matInput placeholder="Enter your email" [formControl]="email" required #emailid>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="user-full-width">
+            <input matInput placeholder="Mobile"  [formControl]="mobile" required minlength #mobileno>
+            <mat-error *ngIf="mobile.invalid">{{getMobileMessage()}}</mat-error>
+          </mat-form-field>
+          <mat-radio-group class="user-full-width">
+            <mat-radio-button checked value="male" (change)="sex = 'male'">Male</mat-radio-button>
+            <mat-radio-button value="female" (change)="sex = 'female'">Female</mat-radio-button>
+          </mat-radio-group>
+          <mat-form-field class="user-full-width">
+            <mat-select placeholder="User Type" [(value)]="TSelect" #type>
+              <mat-option *ngFor="let userType of userTypes" [value]="userType.type_id">
+                {{userType.type_name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="user-full-width">
+            <textarea matInput placeholder="Address" #fulladdress></textarea>
+          </mat-form-field>
+        </mat-card-content>
+      </div>
+      <div class="col-md-4">
+        <div class="addUserUpload">
+          <img src="./assets/user2-160x160.jpg" #userImageView>
+          <input type="file" hidden #userImageFile/>
+          <div class="uploadText" (click)="userImage(userImageView,userImageFile)"><mat-icon>file_upload</mat-icon>Upload Photo</div>
+        </div>
+      </div>
+    </div>
+    <mat-card-actions>
+      <button mat-raised-button (click)="onSubmit(fullname.value, emailid.value, mobileno.value, sex, type.value, fulladdress.value, userImageFile)" color="primary"> Submit </button>
+      <button mat-raised-button (click)="onClose()"> Cancel</button>
+    </mat-card-actions>
+  </div>
+</div>

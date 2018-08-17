@@ -1,0 +1,31 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img [src]="defaultProfilePic" id="icon" alt="User Icon" />
+    </div>
+
+    <!-- Login Form -->
+    <div class="login-container">
+      <mat-form-field>
+        <input matInput placeholder="Enter your email" [formControl]="email" #uemail required>
+        <mat-icon matSuffix>account_circle</mat-icon>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" #upassword>
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+      </mat-form-field>
+
+      <button mat-button class="login_button" (click)="login(uemail.value,upassword.value)">Login</button>
+    </div>
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+
+  </div>
+</div>

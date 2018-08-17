@@ -1,0 +1,48 @@
+<mat-toolbar color="primary">
+  <span>User Type</span>
+    <div class="full"></div>
+    <button mat-icon-button (click)="onClose()">
+        <mat-icon>clear</mat-icon>
+    </button>
+</mat-toolbar>
+<div class="user-content">
+  <div class="addUserType">
+    <mat-form-field>
+      <input matInput placeholder="Type Name" [formControl]="name" required #typename>
+      <mat-error *ngIf="name.invalid">{{name.hasError('required') ? 'You must enter a value' : ''}}</mat-error>
+    </mat-form-field>
+    <button mat-raised-button [disabled]="!name.valid" mat-button color="primary" (click)="onSubmit(typename.value)"> Add </button>
+  </div>
+  <div class="container">
+    <mat-table #table [dataSource]="dataSource">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="serial">
+        <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.serial}} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="type_name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.type_name}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="type_id" >
+        <mat-header-cell *matHeaderCellDef class="deleteCol"></mat-header-cell>
+        <mat-cell *matCellDef="let element" class="deleteCol">
+          <button mat-icon-button color="warn" (click)="onRemove(element.type_id)">
+            <mat-icon>delete_forever</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+</div>

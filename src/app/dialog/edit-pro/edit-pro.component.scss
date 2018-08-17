@@ -1,0 +1,31 @@
+*:focus {
+  border: none;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+mat-card-title{
+  font-weight: bold;
+  font-size: 17pt;
+}
+.right-align{
+  text-align: right;
+}
+.pro-full-width{
+  width: 100%;
+}
+.pro-content{
+  padding: 20px 0 !important;
+}
+mat-grid-tile {
+  background: lightblue;
+}
+input.right-align::-webkit-outer-spin-button,
+input.right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.right-align {
+  -moz-appearance: textfield;
+}

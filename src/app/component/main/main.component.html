@@ -1,0 +1,66 @@
+<mat-drawer-container class="sitebar-container" autosize >
+  <mat-drawer #drawer class="sitebar-sidenav" mode="side" opened="true" (click)="close_all()">
+    <div class="sidebar_top">
+      <div class="title">
+        CMS Admin CP
+      </div>
+    </div>
+    <div class="menu_bg">
+      <ul>
+        <li><a routerLink="/main/dashboard" routerLinkActive="active">Dashboard</a></li>
+        <li><a routerLink="/main/pro-sender" routerLinkActive="active">Submit Product</a></li>
+        <li><a routerLink="/main/wh-sender" routerLinkActive="active">Accept Product</a></li>
+        <li><a routerLink="/main/shipping-product" routerLinkActive="active">Shipping Product</a></li>
+        <li><a routerLink="/main/receiver" routerLinkActive="active">Receive Product</a></li>
+        <li><a routerLink="/main/delivery" routerLinkActive="active">Delivery Product</a></li>
+        <li><a routerLink="/main/user" routerLinkActive="active">All User</a></li>
+        <li><a routerLink="/main/product" routerLinkActive="active">Product List</a></li>
+        <li><a routerLink="/main/productwithoutlist" routerLinkActive="active">Other Product List</a></li>
+        <li><a routerLink="/main/productwithoutlist" routerLinkActive="active">Other Product List</a></li>
+        <li><a routerLink="/main/productwithoutlist" routerLinkActive="active">Other Product List</a></li>
+        <li><a routerLink="/main/productwithoutlist" routerLinkActive="active">Other Product List</a></li>
+        <li><a routerLink="/main/productwithoutlist" routerLinkActive="active">Other Product List</a></li>
+        <li><a routerLink="/main/productwithoutlist" routerLinkActive="active">Other Product List</a></li>
+      </ul>
+    </div>
+  </mat-drawer>
+
+  <div class="sidenav-content" >
+    <div class="meun_bar">
+      <ul>
+        <li><a (click)="sidebar(drawer)"><i class="fas fa-bars"></i></a></li>
+        <li class="full-with"></li>
+        <li><a (click)="Notification()"><i class="fa fa-bell"></i></a>
+          <ul *ngIf="showNotification">
+            <li><a>Change Password</a></li>
+            <li><a>Setting</a></li>
+            <li><a>LogOut</a></li>
+          </ul>
+        </li>
+        <li><a (click)="Messag()"><i class="fa fa-comment-alt"></i></a>
+          <ul *ngIf="showMessag">
+            <li><a>Change Password</a></li>
+            <li><a>Setting</a></li>
+            <li><a>LogOut</a></li>
+          </ul>
+        </li>
+        <li><a (click)="User()"><img src="./assets/user2-160x160.jpg" class="user-image" alt="User Image"><span class="hidden-xs">Ahosan Ullah</span></a>
+          <ul *ngIf="showUser">
+            <li><a>Change Password</a></li>
+            <li><a>Setting</a></li>
+            <li><a (click)="logout()">LogOut</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+
+
+    <div class="main_content" (click)="close_all()">
+      <div class="content_scroll">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+
+</mat-drawer-container>

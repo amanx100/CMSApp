@@ -1,0 +1,62 @@
+<mat-toolbar color="primary">
+  <span>Product List</span>
+  <span class="pro-spacer"></span>
+  <button mat-raised-button (click)="addProduct()"> <mat-icon>add</mat-icon> Add Product </button>
+</mat-toolbar>
+
+<div>
+  <mat-table #table [dataSource]="dataSource">
+    <ng-container matColumnDef="pro_id">
+      <mat-header-cell *matHeaderCellDef class="pro_id"> ID </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="pro_id"> {{element.pro_id}}</mat-cell>
+    </ng-container>
+
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="pro_name">
+      <mat-header-cell *matHeaderCellDef  class="pro_name"> Product Name </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="pro_name"> <strong>{{element.pro_name}}</strong></mat-cell>
+    </ng-container>
+    <!-- Position Column -->
+    <ng-container matColumnDef="WeightPrice">
+      <mat-header-cell *matHeaderCellDef class="Price"> Weight Price </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="Price"> <strong>{{element.WeightPrice}}</strong></mat-cell>
+    </ng-container>
+    <!-- Position Column -->
+    <ng-container matColumnDef="CBMPrice">
+      <mat-header-cell *matHeaderCellDef class="Price"> CBM Price </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="Price"> <strong>{{element.CBMPrice}}</strong></mat-cell>
+    </ng-container>
+
+
+
+    <ng-container matColumnDef="button">
+      <mat-header-cell *matHeaderCellDef class="btn_edit_delete"></mat-header-cell>
+      <mat-cell *matCellDef="let element"  class="btn_edit_delete">
+        <button mat-icon-button [matMenuTriggerFor]="Usermenu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+
+        <mat-menu #Usermenu="matMenu">
+          <button mat-menu-item (click)="EditPro(element.pro_id)">
+            <mat-icon>edit</mat-icon>
+            <span>Edit</span>
+          </button>
+          <button mat-menu-item (click)="DeletePro(element.pro_id)">
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+        </mat-menu>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 20]"
+                 [showFirstLastButtons]="true">
+  </mat-paginator>
+</div>

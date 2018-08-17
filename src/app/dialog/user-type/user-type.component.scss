@@ -1,0 +1,27 @@
+*:focus {
+  border: none;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.mat-table {
+  overflow: auto;
+  max-height: 350px;
+  margin-bottom: 10px;
+}
+.deleteCol{
+  width: 80px !important;
+  flex: none;
+}
+.addUserType {
+  padding: 0 20px !important;
+  mat-form-field {
+    width: 50%;
+  }
+}
+.full {
+  flex: 1 1 auto;
+}
+.user-content{
+  padding: 20px 0 !important;
+}
