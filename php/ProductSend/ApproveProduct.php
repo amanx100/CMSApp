@@ -13,7 +13,7 @@ $json = array();
 if(isset($_POST['imp_id']) && isset($_POST['col'])) {
     $result = $conn->query("UPDATE `import` SET `".$_POST['col']."`='".date('d/m/Y')."' WHERE `imp_id` = '".$_POST['imp_id']."'");
     $json['msg'] = 'yes';
-    $json['name'] = 'Aman';
+    $json['name'] = 'ahosan';
 }else{
     $json['msg'] = 'no';
 }
