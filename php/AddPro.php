@@ -1,6 +1,7 @@
 
 <?php
 include './Connection.php';
+echo "added to new branch";
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
